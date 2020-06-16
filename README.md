@@ -8,7 +8,9 @@ In this app, users will be able to answer questions, see which questions they ha
 ## Project Setup
 
 * clone the Project - `https://github.com/DjeltiRabia/WouldYouRather.git`
-* install the dependencies - `yarn install`
+* install the dependencies - `npm install` or - `yarn install`
+* run the server -`npm start`or -`yarn start`
+and you can play the would you rather game :)
 
 ## License
 
