@@ -173,8 +173,6 @@ export function _saveQuestion (question) {
 }
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
-  console.log("getting the saveQuestionAnswer function parametres: ")
-  console.log("questions[qid][optionOne]", questions[qid]["optionOne"])
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {

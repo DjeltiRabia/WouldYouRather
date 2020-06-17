@@ -7,7 +7,7 @@ class Unanswered extends Component {
     console.log('component unanswered did mount')
   }
   render() {
-    const { questions, users } = this.props;
+    const { questions } = this.props;
 
     return (
         <div className="tab"   >
@@ -18,9 +18,6 @@ class Unanswered extends Component {
                 <Question
                 answer={false}
                  id = {questions[u].id}
-                  author={users[questions[u].author].name}
-                  text={questions[u].optionOne.text}
-                  avatar={users[questions[u].author].avatarURL}
                 />
               </li>
             ))}
@@ -29,11 +26,10 @@ class Unanswered extends Component {
     )
 }
 }
-function mapStateToProps({  questions, users }) {
+function mapStateToProps({  questions }) {
     return {
       questionId: Object.keys(questions),
       questions,
-      users,
     };
 }
 

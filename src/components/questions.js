@@ -2,17 +2,20 @@ import React, {Component} from 'react'
 import { connect } from "react-redux";
 import AnswerQuestion from "./AnswerQuestion";
 import QuestionResults from "./QuestionResults";
+import SignIn from './SignIn';
 class questions extends Component {
 
  
 render(){
-const {id, answer} = this.props
+const {id, s} = this.props
 return(
 <div>
 
-{ answer ? 
-        <QuestionResults id={id} />
-        : <AnswerQuestion id={id}/>    
+{ s === undefined ?
+  <SignIn />
+:(s.fromNotifications ?
+         <QuestionResults id={id} />
+        : <AnswerQuestion id={id}/> )   
 }
   
 </div>
@@ -22,13 +25,13 @@ return(
 
   function mapStateToProps({  authedUser, questions, users }, props) {
     const {id} = props.match.params
-    const answer = props.location.state.fromNotifications 
+    const s = props.location.state
     return {
     authedUser,
      questions, 
      users,
      id,
-     answer
+     s
     };
   }
 

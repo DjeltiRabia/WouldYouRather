@@ -70,8 +70,8 @@ class QuestionResults extends Component {
                       "100%": "#87d068",
                     }}
                     percent={
-                      (this.getVotes().nbVotesOne / this.getVotes().nbVotes) *
-                      100
+                      Math.round((this.getVotes().nbVotesOne / this.getVotes().nbVotes) *
+                      100)
                     }
                   />
                   <h4>
@@ -97,8 +97,8 @@ class QuestionResults extends Component {
                       "100%": "#87d068",
                     }}
                     percent={
-                      (this.getVotes().nbVotesTwo / this.getVotes().nbVotes) *
-                      100
+                      Math.round((this.getVotes().nbVotesTwo / this.getVotes().nbVotes) *
+                      100)
                     }
                   />
                   <h4>

@@ -8,7 +8,7 @@ class AnswerQuestion extends Component {
 
   state ={
     option: "",
-    toHome: false
+    toQuestionResult: false
   }
   handleSubmit =e=>{
   const { dispatch, id, authedUser}= this.props
@@ -22,7 +22,7 @@ class AnswerQuestion extends Component {
     })),
     this.setState(() => ({
       option: "",
-      toHome: true,
+      toQuestionResult: true,
     }))
   )
   : alert('please choose an option')
@@ -35,13 +35,14 @@ class AnswerQuestion extends Component {
   }
 render(){
 const {id, questions, users, authedUser} = this.props
-if (this.state.toHome === true) {
-  return <Redirect to="/Home" />;
+if (this.state.toQuestionResult === true) {
+  return <Redirect to={{pathname:`/questions/${id}`,
+  state:{fromNotifications :true}}} />;
 }
 return(
 
 <div>
-{id === null ? <Page404/>:
+{questions[id] === undefined ? <Page404/>:
         authedUser === null ?
         <SignIn answer= {false} />
         :

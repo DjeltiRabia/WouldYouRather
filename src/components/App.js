@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import "../index.css"
+import "../index.css";
 import NavBar from "./NavBar";
 import SignIn from "./SignIn";
 import AddQuestion from "./AddQuestion";
@@ -9,10 +9,9 @@ import Home from "./Home";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
-import {
-  BrowserRouter as Router,Route,Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Page404 from "./Page404";
-
+import LoadingBar from "react-redux-loading";
 
 class App extends Component {
   componentDidMount() {
@@ -20,14 +19,21 @@ class App extends Component {
   }
   render() {
     return (
-        <Router>
+      <Router>
         <Fragment>
-        <NavBar />
+          <NavBar />
           <Switch>
-            <Route exact path="/" >
-              <SignIn /> 
+            <Route exact path="/">
+              <div>
+                <LoadingBar />
+               {console.log("the loading state", this.props.loading)} 
+                { 
+                this.props.loading 
+                ? null 
+                : <SignIn /> }
+              </div>
             </Route>
-            <Route  path="/Home"> 
+            <Route path="/Home">
               <Home />
             </Route>
             <Route path="/add">
@@ -36,23 +42,18 @@ class App extends Component {
             <Route path="/LeaderBoard">
               <LeaderBoard />
             </Route>
-            <Route path="/questions/:id" component = {questions}>
-            </Route>
-            <Route path='/404' component={Page404} />
-            <Redirect from='*' to='/404' />
+            <Route path="/questions/:id" component={questions}></Route>
+            <Route path="/404" component={Page404} />
+            <Redirect from="*" to="/404" />
           </Switch>
         </Fragment>
       </Router>
-      
     );
   }
 }
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ users }) {
   return {
-    loading: authedUser === null,
-    userId: Object.keys(users),
-    users,
-    questions
+    loading: users === null
   };
 }
-export default connect(mapStateToProps) (App);
+export default connect(mapStateToProps)(App);

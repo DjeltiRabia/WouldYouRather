@@ -5,8 +5,9 @@ This repo is a the second project in the [React Nanodegree program](https://www.
 
 ## Project Setup
 
-* clone the Project - `git@github.com:udacity/reactnd-chirper-app.git`
-* install the dependencies - `yarn install`
+clone the Project - https://github.com/DjeltiRabia/WouldYouRather.git
+install the dependencies - npm install or - yarn install
+run the server -npm start or -yarn start to launch the app and play the would you rather game :)
 
 ## License
 

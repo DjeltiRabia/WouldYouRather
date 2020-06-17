@@ -20,7 +20,6 @@ export function handleInitialData() {
 export function handleAnswerQuestion(info){
 
   return async(dispatch) => {
-      console.log("calling the handelAnswerQuestion Action creator with:", info)
       dispatch(answerQuestion(info))
       dispatch(updateUserAnswer(info))
       return saveQuestionAnswer(info)

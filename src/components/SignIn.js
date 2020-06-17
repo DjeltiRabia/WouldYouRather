@@ -4,6 +4,9 @@ import { setAuthedUser } from "../actions/authedUser";
 import { Redirect } from "react-router-dom";
 
 class SignIn extends Component {
+  componentDidMount(){
+    console.log("the sign in compo did mount")
+  }
   state = {
     authedUserState: "",
     toHome: false,
@@ -29,6 +32,7 @@ class SignIn extends Component {
     
   };
   render() {
+   
     const { userId, users } = this.props;
     if (this.state.toHome === true) {
       if (window.location.pathname === "/") 
@@ -78,6 +82,7 @@ class SignIn extends Component {
   }
 }
 function mapStateToProps({ authedUser, users }) {
+  
   return {
     loading: authedUser === null,
     userId: Object.keys(users),
